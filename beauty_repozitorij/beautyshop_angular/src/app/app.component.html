@@ -1,0 +1,62 @@
+
+<nav class="mainNav navbar navbar-expand-lg fixed-top" id="navId" style="background-color: #dfd7c4;">
+  <div class="container">
+    <img src="https://i.pinimg.com/originals/10/1a/d2/101ad28272e645e7c87c01a313967ad7.jpg" style="height: 30px; width: 30px;">
+    <a class="navbar-brand" style="font-weight: bold; color: #463e2b;">Beauty salon</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link" routerLink="home" (click)="clicked('Home')" [ngClass]="this.trenutnaSelekcija == 'Home' ? 'fw-bold active' : ''">Početna</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="proizvodi" (click)="clicked('Proizvodi')" [ngClass]="this.trenutnaSelekcija == 'Proizvodi' ? 'fw-bold active' : ''">Proizvodi</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="narudzba" (click)="clicked('Narudzbe')" [ngClass]="this.trenutnaSelekcija == 'Narudzbe' ? 'fw-bold active' : ''">Moje narudžbe</a></li>
+        <li *ngIf="loginInformacije.isPermisijaKorisnik" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownRezervacija" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="this.trenutnaSelekcija == 'Rezervacija' ? 'fw-bold active' : ''">Rezervacija</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownRezervacija">
+            <li><a class="dropdown-item" href="#" routerLink="rezervacija" (click)="clicked('Rezervacija')">
+              <i class="bi bi-plus-circle-fill"></i>
+              Nova rezervacija</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#" routerLink="moje-rezervacije" (click)="clicked('Rezervacija')">
+              <i class="bi bi-clock-history"></i>
+              Moje rezervacije</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul *ngIf="loginInformacije.isLogiran" class="navbar-nav d-flex">
+        <li *ngIf="loginInformacije.isPermisijaKorisnik" routerLink="narudzbe" (click)="clicked('Home')">
+          <button style="border: none;">
+            <img src="https://i.pinimg.com/564x/95/67/ba/9567bac44b90867dc730858c2c528f01.jpg" alt="buttonpng" border="0" style="height: 30px; width: 30px;">
+          </button>
+        </li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <button class="btn btn-outline-dark flex-shrink-0 mx-2" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              Moj profil
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="" routerLink="moji-podaci" (click)="clicked('Home')">
+                <i class="bi bi-gear-fill"></i>
+                Postavke profila
+              </a>
+              <a class="dropdown-item" href="" (click)="odjava()">
+                <i class="bi bi-door-closed-fill"></i>
+                Odjavi se
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<!-- Footer-->
+<body class="d-flex flex-column h-100">
+<footer class="text-center text-white" style="background-color: #dfd7c4">
+  <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <p class="text-dark"> © 2020 Copyright: Beauty salon</p>
+  </div>
+</footer>
+</body>
