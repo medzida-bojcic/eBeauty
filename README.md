@@ -1,1 +1,1 @@
-# RS1---seminarski-rad
+# Seminarski rad iz predmeta Razvoj softvera 1
